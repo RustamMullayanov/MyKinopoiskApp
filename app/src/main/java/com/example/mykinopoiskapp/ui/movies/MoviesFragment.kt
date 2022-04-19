@@ -1,15 +1,14 @@
-package com.example.mykinopoiskapp.ui.dashboard
+package com.example.mykinopoiskapp.ui.movies
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.mykinopoiskapp.databinding.FragmentDashboardBinding
+import com.example.mykinopoiskapp.databinding.FragmentMoviesBinding
 
-class DashboardFragment : Fragment() {
-
-    private var _binding: FragmentDashboardBinding? = null
+class MoviesFragment : Fragment() {
+    private var _binding: FragmentMoviesBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -20,10 +19,8 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentMoviesBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
 
         return root
     }

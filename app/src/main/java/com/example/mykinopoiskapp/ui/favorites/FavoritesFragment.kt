@@ -1,14 +1,15 @@
-package com.example.mykinopoiskapp.ui.notifications
+package com.example.mykinopoiskapp.ui.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.mykinopoiskapp.databinding.FragmentNotificationsBinding
+import com.example.mykinopoiskapp.databinding.FragmentFavoritesBinding
 
-class NotificationsFragment : Fragment() {
-    private var _binding: FragmentNotificationsBinding? = null
+class FavoritesFragment : Fragment() {
+
+    private var _binding: FragmentFavoritesBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -19,8 +20,10 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
 
         return root
     }
