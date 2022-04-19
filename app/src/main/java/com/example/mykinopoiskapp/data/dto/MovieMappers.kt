@@ -2,7 +2,7 @@ package com.example.mykinopoiskapp.data.dto
 
 import com.example.mykinopoiskapp.data.entities.MovieEntityForApi
 import com.example.mykinopoiskapp.data.entities.MovieEntityForDB
-import com.example.mykinopoiskapp.domain.Movie
+import com.example.mykinopoiskapp.domain.entities.Movie
 
 fun Movie.toDb(): MovieEntityForDB =
     MovieEntityForDB(

@@ -1,4 +1,4 @@
-package com.example.mykinopoiskapp.domain
+package com.example.mykinopoiskapp.domain.entities
 
 data class Movie(
     val id: Int,
