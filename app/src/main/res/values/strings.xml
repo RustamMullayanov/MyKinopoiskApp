@@ -3,4 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_favorites">Избранное</string>
     <string name="title_movies">Фильмы</string>
+    <string name="writeMovieName">Введите название фильма</string>
+    <string name="movie_name">Название:</string>
+    <string name="movie_genres">Жанры:</string>
+    <string name="movie_year">Год выпуска:</string>
 </resources>
