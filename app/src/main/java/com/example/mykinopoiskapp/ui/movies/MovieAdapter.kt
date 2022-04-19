@@ -7,18 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mykinopoiskapp.databinding.CardMovieBinding
 import com.example.mykinopoiskapp.domain.entities.Movie
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MoviesHolder>() {
+class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
     private var movies: List<Movie> = emptyList()
 
-    class MoviesHolder(val viewBinding: CardMovieBinding) :
+    class MovieHolder(val viewBinding: CardMovieBinding) :
         RecyclerView.ViewHolder(viewBinding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
         val binding = CardMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MoviesHolder(binding)
+        return MovieHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MoviesHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         val item = movies[position]
         with(holder.viewBinding) {
             movieFieldName.text = item.title
