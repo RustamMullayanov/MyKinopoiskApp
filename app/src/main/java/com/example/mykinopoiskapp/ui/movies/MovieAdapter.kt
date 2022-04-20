@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mykinopoiskapp.R
 import com.example.mykinopoiskapp.databinding.CardMovieBinding
 import com.example.mykinopoiskapp.domain.entities.Movie
 
@@ -22,8 +23,11 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
         val item = movies[position]
         with(holder.viewBinding) {
             movieFieldName.text = item.title
-            movieFieldGenres.text = item.genres.toString()
+            movieFieldGenres.text = item.genres.joinToString(separator = " ", limit = 2)
             movieFieldYear.text = item.year.toString()
+
+            // Хардкодный постер для теста верстки
+            moviePoster.setImageResource(R.drawable.movie_poster)
         }
     }
 

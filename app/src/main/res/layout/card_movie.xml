@@ -4,97 +4,82 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginVertical="10dp"
-    android:background="@color/white"
+    app:cardCornerRadius="30dp"
     android:checkable="true"
     android:clickable="true"
     android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="180dp"
-        android:layout_height="wrap_content">
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/recycle_card">
 
         <ImageView
             android:id="@+id/movie_poster"
-            android:layout_width="100dp"
-            android:layout_height="120dp"
+            android:layout_width="150dp"
+            android:src="@drawable/movie_poster"
+            android:layout_height="225dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/movie_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/movie_name"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/movie_poster"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/movie_field_rating"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:text="@string/movie_test_rating"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="@id/movie_poster"
+            app:layout_constraintEnd_toEndOf="@id/movie_poster"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/green"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:id="@+id/movie_field_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:text="@string/movie_name_field_stub"
             app:layout_constraintTop_toBottomOf="@id/movie_poster"
-            app:layout_constraintStart_toEndOf="@id/movie_name"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
-        <TextView
-            android:id="@+id/movie_genres"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/movie_genres"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/movie_name"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/movie_field_genres"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/movie_name"
-            app:layout_constraintStart_toEndOf="@id/movie_genres"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <TextView
-            android:id="@+id/movie_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/movie_year"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/movie_genres"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/movie_genres_field_stub"
+            app:layout_constraintTop_toBottomOf="@id/movie_field_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/movie_field_year"/>
 
         <TextView
             android:id="@+id/movie_field_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/movie_genres"
-            app:layout_constraintStart_toEndOf="@id/movie_year"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:text="@string/movie_year_field_stub"
+            app:layout_constraintTop_toBottomOf="@id/movie_field_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_field_genres"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

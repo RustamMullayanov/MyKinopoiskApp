@@ -11,8 +11,9 @@ class MoviesPresenter @Inject constructor(
     private val getMoviesInfo: GetMoviesInfoUseCase
 ) : BasePresenter<MoviesView>() {
 
+
     override fun onFirstViewAttach() {
-        //getMovies()
+        getMovies()
     }
 
     private fun getMovies(){
