@@ -3,23 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="10dp"
+    android:layout_marginVertical="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
     app:cardCornerRadius="30dp"
     android:checkable="true"
     android:clickable="true"
     android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@color/recycle_card">
 
         <ImageView
             android:id="@+id/movie_poster"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:src="@drawable/movie_poster"
-            android:layout_height="225dp"
+            android:layout_height="210dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:scaleType="fitCenter"
@@ -39,14 +41,14 @@
             app:layout_constraintEnd_toEndOf="@id/movie_poster"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/green"
-            android:layout_marginStart="140dp"
+            android:layout_marginStart="120dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
             android:id="@+id/movie_field_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textAlignment="center"
@@ -60,7 +62,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:text="@string/movie_genres_field_stub"
@@ -72,7 +74,7 @@
             android:id="@+id/movie_field_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
             android:textColor="@color/white"
             android:textSize="14sp"

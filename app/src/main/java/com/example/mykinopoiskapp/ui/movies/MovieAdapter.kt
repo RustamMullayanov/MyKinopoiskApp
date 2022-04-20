@@ -23,7 +23,8 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
         val item = movies[position]
         with(holder.viewBinding) {
             movieFieldName.text = item.title
-            movieFieldGenres.text = item.genres.joinToString(separator = " ", limit = 2)
+            movieFieldGenres.text =
+                item.genres.joinToString(separator = " ", limit = 2, truncated = "")
             movieFieldYear.text = item.year.toString()
 
             // Хардкодный постер для теста верстки

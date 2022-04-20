@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mykinopoiskapp.App
 import com.example.mykinopoiskapp.databinding.FragmentMoviesBinding
 import com.example.mykinopoiskapp.domain.entities.Movie
@@ -46,7 +46,7 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
         val root: View = binding.root
 
         binding.recycleMovies.apply {
-            layoutManager = LinearLayoutManager(this.context)
+            layoutManager = GridLayoutManager(this.context, 2)
             adapter = movieAdapter
         }
 
