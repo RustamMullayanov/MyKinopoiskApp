@@ -1,11 +1,14 @@
 package com.example.mykinopoiskapp.data.repositories
 
 import com.example.mykinopoiskapp.R
+import com.example.mykinopoiskapp.data.api.RetrofitServiceMovies
 import com.example.mykinopoiskapp.domain.entities.Movie
 import com.example.mykinopoiskapp.domain.repositories_interface.MovieRepository
 import javax.inject.Inject
 
-class MovieRepositoryImpl @Inject constructor() : MovieRepository {
+class MovieRepositoryImpl @Inject constructor(
+    retrofitServiceMovies: RetrofitServiceMovies
+) : MovieRepository {
 
     // Тестовые данные для проверки верстки
     private val movies: List<Movie> = listOf(
