@@ -3,4 +3,17 @@
     <string name="title_home">Home</string>
     <string name="title_favorites">Избранное</string>
     <string name="title_movies">Фильмы</string>
+    <string name="writeMovieName">Введите название фильма</string>
+    <string name="movie_name">Название:</string>
+    <string name="movie_genres">Жанры:</string>
+    <string name="movie_year">Год выпуска:</string>
+    <string name="movie_test_rating">10.0</string>
+    <string name="movie_test_description">"В начале 1960-х Генри Форд II принимает решение улучшить имидж компании и сменить курс
+        на производство более модных автомобилей. После неудавшейся попытки купить практически банкрота Ferrari американцы решают
+        бросить вызов итальянским конкурентам на трассе и выиграть престижную гонку 24 часа Ле-Мана. Чтобы создать подходящую машину,
+        компания нанимает автоконструктора Кэррола Шэлби, а тот отказывается работать без выдающегося, но, как считается, трудного в общении
+        гонщика Кена Майлза. Вместе они принимаются за разработку впоследствии знаменитого спорткара Ford GT40."</string>
+    <string name="movie_name_field_stub">Название фильма</string>
+    <string name="movie_genres_field_stub">Жанры</string>
+    <string name="movie_year_field_stub">Год</string>
 </resources>
