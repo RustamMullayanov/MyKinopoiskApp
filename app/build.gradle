@@ -20,8 +20,8 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "API_BASE_URL", "\"https://cloud-api.kinopoisk.dev/\""
-            buildConfigField "String", "MY_TOKEN", "\"/token/6301ee61c2280abf272a24a568fbc4ef\""
+            buildConfigField "String", "API_BASE_URL", "\"https://api.kinopoisk.dev/\""
+            buildConfigField "String", "MY_TOKEN", "\"&token=ZESJDY5-GCNMG3T-GGKB6GD-VSTMSPV\""
         }
         release {
             minifyEnabled false

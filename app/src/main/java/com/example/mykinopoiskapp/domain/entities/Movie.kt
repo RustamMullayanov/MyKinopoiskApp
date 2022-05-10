@@ -6,9 +6,5 @@ data class Movie(
     val rating: Double,
     val posterUrl: String,
     val year: Int,
-    val actors: List<String>,
-    val producers: List<String>,
-    val genres: List<String>,
-    val countries: List<String>,
-    val description: String
+    val description: String? = null
 )
