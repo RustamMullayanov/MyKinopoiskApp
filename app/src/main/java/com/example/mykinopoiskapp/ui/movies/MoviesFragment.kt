@@ -50,6 +50,11 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
             adapter = movieAdapter
         }
 
+        binding.textSearch.setEndIconOnClickListener {
+            val movieName = binding.fieldSearch.text.toString()
+            moviesPresenter.searchMovies(movieName)
+        }
+
         return root
     }
 

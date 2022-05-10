@@ -25,6 +25,9 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
             movieFieldName.text = item.title
             movieFieldYear.text = item.year.toString()
             movieFieldRating.text = item.rating.toString()
+
+            //Хардкод, надо добавить в верстку поле для минут
+            movieFieldLength.text = "${item.movieLength} мин."
             // Хардкодный постер для теста верстки
             moviePoster.setImageResource(R.drawable.movie_poster)
         }

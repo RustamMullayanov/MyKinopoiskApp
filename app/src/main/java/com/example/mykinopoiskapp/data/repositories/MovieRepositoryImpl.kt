@@ -15,54 +15,6 @@ class MovieRepositoryImpl @Inject constructor(
 
     // Тестовые данные для проверки верстки
     private val movies: List<Movie> = listOf(
-        Movie(
-            11111,
-            "Ford против Ferrari",
-            8.2,
-            "",
-            2019,
-            R.string.movie_test_description.toString()
-        ),
-        Movie(
-            11111,
-            "Ford против Ferrari",
-            8.2,
-            "",
-            2019,
-            R.string.movie_test_description.toString()
-        ),
-        Movie(
-            11111,
-            "Ford против Ferrari",
-            8.2,
-            "",
-            2019,
-            R.string.movie_test_description.toString()
-        ),
-        Movie(
-            11111,
-            "Ford против Ferrari",
-            8.2,
-            "",
-            2019,
-            R.string.movie_test_description.toString()
-        ),
-        Movie(
-            11111,
-            "Ford против Ferrari",
-            8.2,
-            "",
-            2019,
-            R.string.movie_test_description.toString()
-        ),
-        Movie(
-            11111,
-            "Ford против Ferrari",
-            8.2,
-            "",
-            2019,
-            R.string.movie_test_description.toString()
-        )
     )
 
     override fun getMoviesInfo(): Single<List<Movie>> {
@@ -71,8 +23,16 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun getMoviesInfoByName(name: String): Single<List<Movie>> {
+        return retrofitServiceMovies.getMoviesListByName(name).map { response ->
+            response.movies.map { movie->movie.toDomain() }
+        }
+    }
+
     override fun getMovieInfoById(id: Int): Single<Movie> {
-        TODO("Not yet implemented")
+        return retrofitServiceMovies.getMovieById(id).map { response ->
+            response.movies.map { movie->movie.toDomain() }.firstOrNull()
+        }
     }
 
     override fun addToFavorites(movie: Movie): Completable {

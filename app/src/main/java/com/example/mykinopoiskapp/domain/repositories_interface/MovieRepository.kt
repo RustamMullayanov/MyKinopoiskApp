@@ -9,5 +9,7 @@ interface MovieRepository {
 
     fun getMovieInfoById(id: Int): Single<Movie>
 
+    fun getMoviesInfoByName(name: String): Single<List<Movie>>
+
     fun addToFavorites(movie: Movie): Completable
 }

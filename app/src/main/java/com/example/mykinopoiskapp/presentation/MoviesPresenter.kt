@@ -3,6 +3,7 @@ package com.example.mykinopoiskapp.presentation
 import android.util.Log
 import com.example.mykinopoiskapp.base.BasePresenter
 import com.example.mykinopoiskapp.domain.usecases.GetMoviesInfoUseCase
+import com.example.mykinopoiskapp.domain.usecases.SearchMoviesByNameUseCase
 import com.example.mykinopoiskapp.views.MoviesView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -12,7 +13,8 @@ import javax.inject.Inject
 
 @InjectViewState
 class MoviesPresenter @Inject constructor(
-    private val getMoviesInfo: GetMoviesInfoUseCase
+    private val getMoviesInfo: GetMoviesInfoUseCase,
+    private val searchMoviesByName: SearchMoviesByNameUseCase
 ) : BasePresenter<MoviesView>() {
 
 
@@ -33,5 +35,18 @@ class MoviesPresenter @Inject constructor(
             }).disposeOnFinish()
         //viewState.showMoviesInfo(getMoviesInfo())
         //.showSuccess("Данные успешно загрузились")
+    }
+
+    fun searchMovies(name: String){
+        searchMoviesByName(name)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ movies ->
+                viewState.showMoviesInfo(movies)
+            }, { error ->
+                viewState.showError("Некорректное название фильма")
+                Timber.e(error)
+                Log.e("TAG", error.toString())
+            }).disposeOnFinish()
     }
 }

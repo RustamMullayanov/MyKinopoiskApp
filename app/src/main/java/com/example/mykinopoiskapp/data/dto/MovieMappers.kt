@@ -10,6 +10,7 @@ fun Movie.toDb(): MovieEntityForDB =
         title = this.title,
         rating = this.rating,
         posterUrl = this.posterUrl,
+        movieLength = this.movieLength,
         year = this.year,
         description = this.description!!
     )
@@ -20,6 +21,7 @@ fun MovieEntityForDB.toDomain(): Movie =
         title = this.title,
         rating = this.rating,
         posterUrl = this.posterUrl,
+        movieLength = this.movieLength,
         year = this.year,
         description = this.description
     )
@@ -27,9 +29,10 @@ fun MovieEntityForDB.toDomain(): Movie =
 fun MovieEntityForApi.toDomain(): Movie =
     Movie(
         id = this.id,
-        title = this.name?: this.alternativeName!! ,
-        rating = this.rating.ratingKp,
-        posterUrl = this.poster.url,
+        title = this.name!! ,
+        rating = this.rating!!.ratingKp!!,
+        posterUrl = this.poster.url!!,
+        movieLength = this.movieLength!!,
         year = this.year!!,
         description = this.description
     )

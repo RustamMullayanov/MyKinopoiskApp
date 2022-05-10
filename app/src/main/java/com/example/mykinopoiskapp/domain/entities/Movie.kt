@@ -5,6 +5,7 @@ data class Movie(
     val title: String,
     val rating: Double,
     val posterUrl: String,
+    val movieLength: Int,
     val year: Int,
     val description: String? = null
 )
