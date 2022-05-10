@@ -22,7 +22,7 @@ class MoviesPresenter @Inject constructor(
         getMovies()
     }
 
-    private fun getMovies(){
+    fun getMovies(){
         getMoviesInfo()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

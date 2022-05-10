@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mykinopoiskapp.R
 import com.example.mykinopoiskapp.databinding.CardMovieBinding
 import com.example.mykinopoiskapp.domain.entities.Movie
@@ -34,10 +35,14 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
                     movieFieldRating.context
                 )
             )
+
+            Glide
+                .with(moviePoster.context)
+                .load(item.posterUrl)
+                .into(moviePoster)
+
             //Хардкод, надо добавить в верстку поле для минут
             movieFieldLength.text = "${item.movieLength} мин."
-            // Хардкодный постер для теста верстки
-            moviePoster.setImageResource(R.drawable.movie_poster)
         }
     }
 
