@@ -41,6 +41,10 @@ class MovieAdapter(private val clickListener: (Int) -> Unit) : RecyclerView.Adap
                 .load(item.posterUrl)
                 .into(moviePoster)
 
+            holder.itemView.setOnClickListener {
+                clickListener.invoke(item.id)
+            }
+
             //Хардкод, надо добавить в верстку поле для минут
             movieFieldLength.text = "${item.movieLength} мин."
         }

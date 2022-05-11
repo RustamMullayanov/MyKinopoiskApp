@@ -3,6 +3,7 @@ package com.example.mykinopoiskapp.ui.movies
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.mykinopoiskapp.App
 import com.example.mykinopoiskapp.databinding.ActivityMovieBinding
@@ -34,7 +35,17 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        moviePresenter.onAppearing(movieId)
+        //moviePresenter.onAppearing(movieId)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                this.finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun showMovieInfo(movie: Movie) {
