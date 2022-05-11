@@ -35,7 +35,9 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        movieAdapter = MovieAdapter()
+        movieAdapter = MovieAdapter { id ->
+            startActivity(MovieActivity.createIntent(requireContext().applicationContext, id))
+        }
     }
 
     override fun onCreateView(

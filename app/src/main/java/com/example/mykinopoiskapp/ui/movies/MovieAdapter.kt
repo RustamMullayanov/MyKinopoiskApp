@@ -11,7 +11,7 @@ import com.example.mykinopoiskapp.R
 import com.example.mykinopoiskapp.databinding.CardMovieBinding
 import com.example.mykinopoiskapp.domain.entities.Movie
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
+class MovieAdapter(private val clickListener: (Int) -> Unit) : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
     private var movies: List<Movie> = emptyList()
 
     class MovieHolder(val viewBinding: CardMovieBinding) :
