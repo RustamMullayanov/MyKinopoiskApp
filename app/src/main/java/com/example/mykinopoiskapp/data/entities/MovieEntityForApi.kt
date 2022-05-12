@@ -4,35 +4,37 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class MovieEntityForApi(
-
-    @SerialName("id_kinopoisk")
+data class MovieEntityForApi(
+    @SerialName("id")
     val id: Int,
 
-    @SerialName("title")
-    val title: String,
+    @SerialName("name")
+    val name: String? = "",
 
-    @SerialName("rating_kinopoisk")
-    val rating: Double,
+    @SerialName("rating")
+    val rating: Rating,
+
+    @SerialName("movieLength")
+    val movieLength: Int? = 0,
 
     @SerialName("poster")
-    val posterUrl: String,
+    val poster: Poster,
 
     @SerialName("year")
-    val year: Int,
-
-    @SerialName("actors")
-    val actors: List<String>,
-
-    @SerialName("producers")
-    val producers: List<String>,
-
-    @SerialName("genres")
-    val genres: List<String>,
-
-    @SerialName("countries")
-    val countries: List<String>,
+    val year: Int? = 0,
 
     @SerialName("description")
-    val description: String
-)
+    val description: String? = ""
+) {
+    @Serializable
+    data class Rating(@SerialName("kp") val ratingKp: Double)
+
+    @Serializable
+    data class Poster(@SerialName("url") val url: String)
+}
+
+
+
+
+
+

@@ -14,6 +14,8 @@
         компания нанимает автоконструктора Кэррола Шэлби, а тот отказывается работать без выдающегося, но, как считается, трудного в общении
         гонщика Кена Майлза. Вместе они принимаются за разработку впоследствии знаменитого спорткара Ford GT40."</string>
     <string name="movie_name_field_stub">Название фильма</string>
-    <string name="movie_genres_field_stub">Жанры</string>
+    <string name="movie_length_field_stub">мин.</string>
     <string name="movie_year_field_stub">Год</string>
+    <string name="movie_description_tittle">Описание:</string>
+    <string name="movie_field_description_sub">Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст</string>
 </resources>

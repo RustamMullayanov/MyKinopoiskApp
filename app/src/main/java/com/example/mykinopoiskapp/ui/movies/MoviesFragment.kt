@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mykinopoiskapp.App
 import com.example.mykinopoiskapp.databinding.FragmentMoviesBinding
@@ -34,7 +35,9 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        movieAdapter = MovieAdapter()
+        movieAdapter = MovieAdapter { id ->
+            startActivity(MovieActivity.createIntent(requireContext().applicationContext, id))
+        }
     }
 
     override fun onCreateView(
@@ -48,6 +51,16 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
         binding.recycleMovies.apply {
             layoutManager = GridLayoutManager(this.context, 2)
             adapter = movieAdapter
+        }
+
+        binding.textSearch.setEndIconOnClickListener {
+            val movieName = binding.fieldSearch.text.toString()
+            moviesPresenter.searchMovies(movieName)
+        }
+
+        binding.fieldSearch.addTextChangedListener {
+            if (binding.fieldSearch.text.toString().isEmpty())
+                moviesPresenter.getMovies()
         }
 
         return root
