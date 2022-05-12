@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.mykinopoiskapp.App
 import com.example.mykinopoiskapp.databinding.ActivityMovieBinding
 import com.example.mykinopoiskapp.domain.entities.Movie
@@ -35,7 +37,7 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //moviePresenter.onAppearing(movieId)
+        moviePresenter.onAppearing(movieId)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -49,7 +51,23 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
     }
 
     override fun showMovieInfo(movie: Movie) {
-        TODO("Not yet implemented")
+        with(binding) {
+            movieName.text = movie.title
+            movieRating.text = movie.rating.toString()
+            movieLength.text = movie.movieLength.toString()
+            movieFiledDescription.text = movie.description
+            movieFiledDescription.setOnClickListener { view ->
+                (view as TextView).maxLines = Int.MAX_VALUE
+            }
+            movieYear.text = movie.year.toString()
+
+            Glide
+                .with(moviePoster.context)
+                .load(movie.posterUrl)
+                .into(moviePoster)
+        }
+
+        supportActionBar?.title = movie.title
     }
 
     override fun showSuccess(message: String) {

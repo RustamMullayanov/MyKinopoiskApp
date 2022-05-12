@@ -16,6 +16,6 @@ interface RetrofitServiceMovies {
     @GET("/movie?${BuildConfig.MY_TOKEN}&field=type&search=movie&field=name")
     fun getMoviesListByName(@Query("search") search: String): Single<KinopoiskResponse>
 
-    @GET("/movie?field=type&search=movie&field=id&search={id}${BuildConfig.MY_TOKEN}")
-    fun getMovieById(@Query("id") id: Int): Single<KinopoiskResponse>
+    @GET("/movie?${BuildConfig.MY_TOKEN}&field=type&search=movie&field=id")
+    fun getMovieById(@Query("search") id: Int): Single<KinopoiskResponse>
 }
