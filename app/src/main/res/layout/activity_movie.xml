@@ -67,17 +67,16 @@
                 android:text="2021"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/movie_genres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:text="Жанры"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -106,16 +105,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:text="100 мин."
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/movie_pg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="18+"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
