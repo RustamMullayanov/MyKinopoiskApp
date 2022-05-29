@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.mykinopoiskapp.App
 import com.example.mykinopoiskapp.databinding.ActivityMovieBinding
+import com.example.mykinopoiskapp.domain.entities.Actor
 import com.example.mykinopoiskapp.domain.entities.Movie
 import com.example.mykinopoiskapp.presentation.MoviePresenter
 import com.example.mykinopoiskapp.views.MovieView
@@ -27,6 +29,7 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
     private val binding: ActivityMovieBinding by lazy {
         ActivityMovieBinding.inflate(layoutInflater)
     }
+    private lateinit var actorAdapter: ActorAdapter
 
     private val movieId: Int by lazy { intent.getIntExtra(EXTRA_MOVIE_ID, 0) }
 
@@ -34,8 +37,18 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        actorAdapter = ActorAdapter()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.recycleActors.apply {
+            layoutManager = LinearLayoutManager(
+                this.context,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            adapter = actorAdapter
+        }
 
         moviePresenter.onAppearing(movieId)
     }
@@ -68,6 +81,10 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
         }
 
         supportActionBar?.title = movie.title
+    }
+
+    override fun showActorsInfo(actors: List<Actor>) {
+        actorAdapter.setActors(actors)
     }
 
     override fun showSuccess(message: String) {

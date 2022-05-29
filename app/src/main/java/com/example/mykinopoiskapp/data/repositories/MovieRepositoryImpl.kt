@@ -19,20 +19,18 @@ class MovieRepositoryImpl @Inject constructor(
 
     override fun getMoviesInfo(): Single<List<Movie>> {
         return retrofitServiceMovies.getMoviesList().map { response ->
-            response.movies.map { movie->movie.toDomain() }
+            response.movies.map { movie -> movie.toDomain() }
         }
     }
 
     override fun getMoviesInfoByName(name: String): Single<List<Movie>> {
         return retrofitServiceMovies.getMoviesListByName(name).map { response ->
-            response.movies.map { movie->movie.toDomain() }
+            response.movies.map { movie -> movie.toDomain() }
         }
     }
 
     override fun getMovieInfoById(id: Int): Single<Movie> {
-        return retrofitServiceMovies.getMovieById(id).map { response ->
-            response.movies.map { movie->movie.toDomain() }.firstOrNull()
-        }
+        return retrofitServiceMovies.getMovieById(id).map { movie -> movie.toDomain() }
     }
 
     override fun addToFavorites(movie: Movie): Completable {

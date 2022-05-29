@@ -19,11 +19,12 @@ fun Movie.toDB(): MovieEntityForDB =
 fun MovieEntityForApi.toDomain(): Movie =
     Movie(
         id = this.id,
-        title = this.name!! ,
-        rating = this.rating!!.ratingKp!!,
-        posterUrl = this.poster.url!!,
-        movieLength = this.movieLength!!,
-        year = this.year!!,
-        actors = this.actors.map { it.toDomain() },
+        title = this.name ?: "",
+        rating = this.rating?.ratingKp ?: 0.0,
+        posterUrl = this.poster?.url ?: "",
+        movieLength = this.movieLength ?: 0,
+        year = this.year ?: 0,
+        actors = this.persons?.filter { it.profession == "actor" }?.map { it.toDomain() }
+            ?: emptyList(),
         description = this.description
     )

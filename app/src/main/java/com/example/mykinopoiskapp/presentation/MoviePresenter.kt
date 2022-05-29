@@ -21,6 +21,7 @@ class MoviePresenter @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ movie ->
                 viewState.showMovieInfo(movie)
+                viewState.showActorsInfo(movie.actors)
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
                 Timber.e(error)

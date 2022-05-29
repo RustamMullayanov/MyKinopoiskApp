@@ -13,6 +13,7 @@
             android:id="@+id/movie_poster"
             android:layout_width="match_parent"
             android:layout_height="350dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/poster_sub"
@@ -124,8 +125,12 @@
             android:id="@+id/movie_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
+            android:background="@color/background_fragment"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="@string/movie_description_tittle"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -138,11 +143,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:maxLines="4"
             android:text="@string/movie_field_description_sub"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:maxLines="4"
-            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="@id/movie_actors"
             app:layout_constraintTop_toBottomOf="@+id/movie_description" />
 
@@ -150,21 +155,26 @@
             android:id="@+id/movie_actors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
+            android:background="@color/background_fragment"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="@string/movie_actors_tittle"
             android:textColor="@color/white"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@id/recycle_movies"
+            app:layout_constraintBottom_toTopOf="@id/recycle_actors"
             app:layout_constraintTop_toBottomOf="@+id/movie_filed_description" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_movies"
+            android:id="@+id/recycle_actors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/movie_actors"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_actors" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
