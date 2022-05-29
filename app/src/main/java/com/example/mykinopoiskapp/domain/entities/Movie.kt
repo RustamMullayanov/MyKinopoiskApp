@@ -7,5 +7,6 @@ data class Movie(
     val posterUrl: String,
     val movieLength: Int,
     val year: Int,
+    val actors: List<Actor>,
     val description: String? = null
 )

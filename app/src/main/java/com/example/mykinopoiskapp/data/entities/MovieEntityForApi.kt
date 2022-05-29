@@ -23,6 +23,9 @@ data class MovieEntityForApi(
     @SerialName("year")
     val year: Int? = 0,
 
+    @SerialName("actors")
+    val actors: List<ActorEntityForApi>,
+
     @SerialName("description")
     val description: String? = ""
 ) {
@@ -31,6 +34,22 @@ data class MovieEntityForApi(
 
     @Serializable
     data class Poster(@SerialName("url") val url: String)
+
+    @Serializable
+    data class ActorEntityForApi(
+
+        @SerialName("id")
+        val id: Int,
+
+        @SerialName("name")
+        val name: String,
+
+        @SerialName("photo")
+        val photo: String,
+
+        @SerialName("description")
+        val description: String?
+    )
 }
 
 

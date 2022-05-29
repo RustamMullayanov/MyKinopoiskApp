@@ -25,7 +25,7 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
     private val moviesPresenter by moxyPresenter { presenterProvider.get() }
 
     private var _binding: FragmentMoviesBinding? = null
-    private lateinit var movieAdapter: MovieAdapter
+    private lateinit var moviesAdapter: MoviesAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -35,7 +35,7 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
-        movieAdapter = MovieAdapter { id ->
+        moviesAdapter = MoviesAdapter { id ->
             startActivity(MovieActivity.createIntent(requireContext().applicationContext, id))
         }
     }
@@ -50,7 +50,7 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
 
         binding.recycleMovies.apply {
             layoutManager = GridLayoutManager(this.context, 2)
-            adapter = movieAdapter
+            adapter = moviesAdapter
         }
 
         binding.textSearch.setEndIconOnClickListener {
@@ -67,7 +67,7 @@ class MoviesFragment : MvpAppCompatFragment(), MoviesView {
     }
 
     override fun showMoviesInfo(movies: List<Movie>) {
-        movieAdapter.setMovies(movies)
+        moviesAdapter.setMovies(movies)
     }
 
     override fun showSuccess(message: String) {

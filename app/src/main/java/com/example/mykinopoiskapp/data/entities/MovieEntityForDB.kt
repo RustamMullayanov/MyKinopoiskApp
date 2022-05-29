@@ -7,5 +7,13 @@ data class MovieEntityForDB(
     val posterUrl: String,
     val movieLength: Int,
     val year: Int,
+    val actors: List<ActorEntityForDB>,
     val description: String
-)
+){
+    data class ActorEntityForDB(
+        val id: Int,
+        val name: String,
+        val photo: String,
+        val description: String
+    )
+}
