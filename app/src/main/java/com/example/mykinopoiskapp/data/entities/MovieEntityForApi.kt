@@ -20,6 +20,12 @@ data class MovieEntityForApi(
     @SerialName("poster")
     val poster: Poster? = null,
 
+    @SerialName("genres")
+    val genres: List<Genre>? = null,
+
+    @SerialName("countries")
+    val countries: List<Country>? = null,
+
     @SerialName("year")
     val year: Int? = 0,
 
@@ -34,6 +40,12 @@ data class MovieEntityForApi(
 
     @Serializable
     data class Poster(@SerialName("url") val url: String?)
+
+    @Serializable
+    data class Genre(@SerialName("name") val name: String?)
+
+    @Serializable
+    data class Country(@SerialName("name") val name: String?)
 
     @Serializable
     data class PersonEntityForApi(
