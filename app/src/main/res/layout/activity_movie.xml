@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/recycle_card">
@@ -27,7 +28,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
-            android:text="Название фильма"
+            android:text="@string/movie_name_stub"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="26sp"
@@ -41,74 +42,90 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
-            android:text="8.0"
+            android:text="@string/movie_rating_stub"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/second_floor"
+            app:layout_constraintBottom_toTopOf="@id/movie_genres"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movie_name" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/second_floor"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/movie_genres"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="@string/movie_genres_stub"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/movie_year"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_rating" />
+
+        <TextView
+            android:id="@+id/movie_year"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/movie_year_stub"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/button_add_to_favorites"
+            app:layout_constraintEnd_toStartOf="@id/movie_country"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_genres" />
+
+        <TextView
+            android:id="@+id/movie_country"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/third_section"
-            app:layout_constraintTop_toBottomOf="@id/movie_rating">
+            android:text="@string/movie_country_stub"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/movie_length"
+            app:layout_constraintStart_toEndOf="@id/movie_year"
+            app:layout_constraintTop_toTopOf="@id/movie_year" />
 
-            <TextView
-                android:id="@+id/movie_year"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:text="2021"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/movie_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="50dp"
+            android:text="@string/movie_length_stub"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_country"
+            app:layout_constraintTop_toTopOf="@id/movie_country" />
 
-            <TextView
-                android:id="@+id/movie_genres"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Жанры"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/third_section"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_add_to_favorites"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:gravity="center"
+            android:backgroundTint="@color/system_color"
+            android:src="@drawable/ic_add_to_favorites_24"
+            app:borderWidth="0dp"
+            app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/movie_description"
-            app:layout_constraintTop_toBottomOf="@id/second_floor">
-
-            <TextView
-                android:id="@+id/movie_country"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:text="Старана"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/movie_length"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:text="100 мин."
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_year"
+            app:maxImageSize="32dp" />
 
         <TextView
             android:id="@+id/movie_description"
@@ -124,7 +141,7 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@id/movie_filed_description"
-            app:layout_constraintTop_toBottomOf="@+id/third_section" />
+            app:layout_constraintTop_toBottomOf="@+id/button_add_to_favorites" />
 
         <TextView
             android:id="@+id/movie_filed_description"
