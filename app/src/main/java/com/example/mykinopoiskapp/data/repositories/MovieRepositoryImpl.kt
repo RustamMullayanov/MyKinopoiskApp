@@ -1,6 +1,8 @@
 package com.example.mykinopoiskapp.data.repositories
 
+import android.annotation.SuppressLint
 import com.example.mykinopoiskapp.R
+import com.example.mykinopoiskapp.data.CacheManager
 import com.example.mykinopoiskapp.data.api.RetrofitServiceMovies
 import com.example.mykinopoiskapp.data.dao.MoviesDao
 import com.example.mykinopoiskapp.data.dto.toDB
@@ -13,12 +15,9 @@ import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
     private val retrofitServiceMovies: RetrofitServiceMovies,
-    private val moviesDao: MoviesDao
+    private val moviesDao: MoviesDao,
+    private val cacheManager: CacheManager
 ) : MovieRepository {
-
-    // Тестовые данные для проверки верстки
-    private val movies: List<Movie> = listOf(
-    )
 
     override fun getMoviesInfo(): Single<List<Movie>> {
         return retrofitServiceMovies.getMoviesList().map { response ->
@@ -36,12 +35,14 @@ class MovieRepositoryImpl @Inject constructor(
         return moviesDao.getCachedMovies().map { cache -> cache.map { it.toDomain() } }
     }
 
-    override fun getFavoritesInfoById(id: Int): Single<Movie> {
-        return moviesDao.getCachedMovieById(id).map { it.toDomain() }
-    }
-
     override fun getMovieInfoById(id: Int): Single<Movie> {
-        return retrofitServiceMovies.getMovieById(id).map { movie -> movie.toDomain() }
+        return cacheManager.isMovieCached(id)
+            .flatMap { isCached ->
+                if (isCached)
+                    getMovieByIdFromCache(id)
+                else
+                    getMovieByIdFromServer(id)
+            }
     }
 
     override fun addToFavorites(movie: Movie): Completable {
@@ -50,5 +51,13 @@ class MovieRepositoryImpl @Inject constructor(
 
     override fun removeFromFavorites(movie: Movie): Completable {
         return moviesDao.clearMovieCache(movie.toDB())
+    }
+
+    private fun getMovieByIdFromServer(id: Int): Single<Movie> {
+        return retrofitServiceMovies.getMovieById(id).map { movie -> movie.toDomain() }
+    }
+
+    private fun getMovieByIdFromCache(id: Int): Single<Movie> {
+        return moviesDao.getCachedMovieById(id).toSingle().map { it.toDomain() }
     }
 }

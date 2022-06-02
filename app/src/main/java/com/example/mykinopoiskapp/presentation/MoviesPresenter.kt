@@ -1,6 +1,5 @@
 package com.example.mykinopoiskapp.presentation
 
-import android.util.Log
 import com.example.mykinopoiskapp.base.BasePresenter
 import com.example.mykinopoiskapp.domain.usecases.GetMoviesInfoUseCase
 import com.example.mykinopoiskapp.domain.usecases.SearchMoviesByNameUseCase
@@ -17,12 +16,11 @@ class MoviesPresenter @Inject constructor(
     private val searchMoviesByName: SearchMoviesByNameUseCase
 ) : BasePresenter<MoviesView>() {
 
-
     override fun onFirstViewAttach() {
         getMovies()
     }
 
-    fun getMovies(){
+    fun getMovies() {
         getMoviesInfo()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -31,13 +29,10 @@ class MoviesPresenter @Inject constructor(
             }, { error ->
                 viewState.showError("Данные недоступны, повторите попытку позже")
                 Timber.e(error)
-                Log.e("TAG", error.toString())
             }).disposeOnFinish()
-        //viewState.showMoviesInfo(getMoviesInfo())
-        //.showSuccess("Данные успешно загрузились")
     }
 
-    fun searchMovies(name: String){
+    fun searchMovies(name: String) {
         searchMoviesByName(name)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -46,7 +41,6 @@ class MoviesPresenter @Inject constructor(
             }, { error ->
                 viewState.showError("Некорректное название фильма")
                 Timber.e(error)
-                Log.e("TAG", error.toString())
             }).disposeOnFinish()
     }
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mykinopoiskapp.App
 import com.example.mykinopoiskapp.databinding.FragmentFavoritesBinding
 import com.example.mykinopoiskapp.domain.entities.Movie
+import com.example.mykinopoiskapp.presentation.FavoritesPresenter
 import com.example.mykinopoiskapp.presentation.MoviesPresenter
 import com.example.mykinopoiskapp.ui.movies.MovieActivity
 import com.example.mykinopoiskapp.ui.movies.MovieAdapter
@@ -22,7 +23,7 @@ import javax.inject.Provider
 class FavoritesFragment : MvpAppCompatFragment(), FavoritesView {
 
     @Inject
-    lateinit var presenterProvider: Provider<MoviesPresenter>
+    lateinit var presenterProvider: Provider<FavoritesPresenter>
 
     private val favoritesPresenter by moxyPresenter { presenterProvider.get() }
 
@@ -58,7 +59,7 @@ class FavoritesFragment : MvpAppCompatFragment(), FavoritesView {
         return root
     }
 
-    override fun showMoviesInfo(movies: List<Movie>) {
+    override fun showFavoritesInfo(movies: List<Movie>) {
         movieAdapter.setMovies(movies)
     }
 

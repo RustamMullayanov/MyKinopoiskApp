@@ -4,13 +4,14 @@ import androidx.room.*
 import com.example.mykinopoiskapp.data.entities.MovieEntityForDB
 import com.example.mykinopoiskapp.data.entities.MovieEntityForDB.Companion.TABLE_NAME
 import io.reactivex.Completable
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 @Dao
 interface MoviesDao {
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = :id ")
-    fun getCachedMovieById(id: Int): Single<MovieEntityForDB>
+    fun getCachedMovieById(id: Int): Maybe<MovieEntityForDB>
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getCachedMovies(): Single<List<MovieEntityForDB>>

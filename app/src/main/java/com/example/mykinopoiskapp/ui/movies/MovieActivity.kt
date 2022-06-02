@@ -33,7 +33,7 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
     }
     private lateinit var actorAdapter: ActorAdapter
     private var isDescriptionOpen = false
-
+    private lateinit var movie: Movie
     private val movieId: Int by lazy { intent.getIntExtra(EXTRA_MOVIE_ID, 0) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +53,10 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
             adapter = actorAdapter
         }
 
+        binding.buttonAddToFavorites.setOnClickListener {
+            moviePresenter.addToFavorites(movie)
+        }
+
         moviePresenter.onAppearing(movieId)
     }
 
@@ -67,6 +71,7 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
     }
 
     override fun showMovieInfo(movie: Movie) {
+        this.movie = movie
         with(binding) {
             movieName.text = movie.title
             movieRating.text = movie.rating.toString()

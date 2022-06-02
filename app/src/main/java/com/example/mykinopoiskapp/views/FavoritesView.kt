@@ -7,5 +7,5 @@ import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(value = AddToEndSingleStrategy::class)
 interface FavoritesView : BaseView {
-    fun showMoviesInfo(movies: List<Movie>)
+    fun showFavoritesInfo(movies: List<Movie>)
 }
