@@ -11,5 +11,11 @@ interface MovieRepository {
 
     fun getMoviesInfoByName(name: String): Single<List<Movie>>
 
+    fun getFavoritesInfo(): Single<List<Movie>>
+
+    fun getFavoritesInfoById(id: Int): Single<Movie>
+
     fun addToFavorites(movie: Movie): Completable
+
+    fun removeFromFavorites(movie: Movie): Completable
 }

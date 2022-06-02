@@ -17,3 +17,10 @@ fun Actor.toDB(): ActorEntityForDB =
         name = this.name,
         photo = this.photo,
     )
+
+fun ActorEntityForDB.toDomain(): Actor =
+    Actor(
+        id = this.id,
+        name = this.name,
+        photo = this.photo,
+    )
