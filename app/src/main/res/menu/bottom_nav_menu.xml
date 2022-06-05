@@ -7,11 +7,6 @@
         android:title="@string/title_movies" />
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
-
-    <item
         android:id="@+id/navigation_favorites"
         android:icon="@drawable/ic_favorites_black_24"
         android:title="@string/title_favorites" />

@@ -62,9 +62,12 @@ class FavoritesFragment : MvpAppCompatFragment(), FavoritesView {
     override fun onResume() {
         super.onResume()
         favoritesPresenter.getFavorites()
+        binding.emptyRecycleMovies.visibility = View.GONE
     }
 
     override fun showFavoritesInfo(movies: List<Movie>) {
+        if (movies.isEmpty())
+            binding.emptyRecycleMovies.visibility = View.VISIBLE
         movieAdapter.setMovies(movies)
     }
 
