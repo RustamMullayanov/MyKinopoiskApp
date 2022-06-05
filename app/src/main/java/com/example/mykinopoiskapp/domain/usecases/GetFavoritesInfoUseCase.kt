@@ -5,8 +5,8 @@ import com.example.mykinopoiskapp.domain.repositories_interface.MovieRepository
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GetMovieInfoByIdUseCase @Inject constructor(private val movieRepository: MovieRepository) {
-    operator fun invoke(id: Int): Single<Pair<Movie, Boolean>> {
-        return movieRepository.getMovieInfoById(id)
+class GetFavoritesInfoUseCase @Inject constructor(private val movieRepository: MovieRepository) {
+    operator fun invoke(): Single<List<Movie>> {
+        return movieRepository.getFavoritesInfo()
     }
 }

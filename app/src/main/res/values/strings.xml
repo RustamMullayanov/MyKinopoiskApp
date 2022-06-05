@@ -19,4 +19,13 @@
     <string name="movie_description_tittle">Описание:</string>
     <string name="movie_field_description_sub">Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст</string>
     <string name="movie_actors_tittle">Актеры:</string>
+    <string name="movie_country_stub">Старана</string>
+    <string name="movie_length_stub">100 мин.</string>
+    <string name="movie_genres_stub">Жанры</string>
+    <string name="movie_year_stub">2021</string>
+    <string name="movie_rating_stub">8.0</string>
+    <string name="movie_name_stub">Название фильма</string>
+    <string name="add_to_favorites_tittle_stub">Добавить в избранное</string>
+    <string name="remove_from_favorites_tittle_stub">Удалить из избранного</string>
+    <string name="movies_tittle_stub">Фильмы</string>
 </resources>
