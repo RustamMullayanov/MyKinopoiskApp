@@ -59,6 +59,11 @@ class FavoritesFragment : MvpAppCompatFragment(), FavoritesView {
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+        favoritesPresenter.getFavorites()
+    }
+
     override fun showFavoritesInfo(movies: List<Movie>) {
         movieAdapter.setMovies(movies)
     }

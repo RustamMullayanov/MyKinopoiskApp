@@ -6,7 +6,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class GetMovieInfoByIdUseCase @Inject constructor(private val movieRepository: MovieRepository) {
-    operator fun invoke(id: Int): Single<Movie> {
+    operator fun invoke(id: Int): Single<Pair<Movie, Boolean>> {
         return movieRepository.getMovieInfoById(id)
     }
 }

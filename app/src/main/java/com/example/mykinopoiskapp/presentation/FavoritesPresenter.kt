@@ -14,11 +14,7 @@ class FavoritesPresenter @Inject constructor(
     private val getFavoritesInfoUseCase: GetFavoritesInfoUseCase
 ) : BasePresenter<FavoritesView>() {
 
-    override fun onFirstViewAttach() {
-        getFavorites()
-    }
-
-    private fun getFavorites() {
+    fun getFavorites() {
         getFavoritesInfoUseCase()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

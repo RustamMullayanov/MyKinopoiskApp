@@ -10,4 +10,6 @@ import moxy.viewstate.strategy.StateStrategyType
 interface MovieView: BaseView {
     fun showMovieInfo(movie: Movie)
     fun showActorsInfo(actors: List<Actor>)
+    fun showButtonRemoveFromCache()
+    fun showButtonAddToCache()
 }

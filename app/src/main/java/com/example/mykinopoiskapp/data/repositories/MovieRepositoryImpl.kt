@@ -1,7 +1,5 @@
 package com.example.mykinopoiskapp.data.repositories
 
-import android.annotation.SuppressLint
-import com.example.mykinopoiskapp.R
 import com.example.mykinopoiskapp.data.CacheManager
 import com.example.mykinopoiskapp.data.api.RetrofitServiceMovies
 import com.example.mykinopoiskapp.data.dao.MoviesDao
@@ -35,13 +33,13 @@ class MovieRepositoryImpl @Inject constructor(
         return moviesDao.getCachedMovies().map { cache -> cache.map { it.toDomain() } }
     }
 
-    override fun getMovieInfoById(id: Int): Single<Movie> {
+    override fun getMovieInfoById(id: Int): Single<Pair<Movie, Boolean>> {
         return cacheManager.isMovieCached(id)
             .flatMap { isCached ->
                 if (isCached)
-                    getMovieByIdFromCache(id)
+                    getMovieByIdFromCache(id, isCached)
                 else
-                    getMovieByIdFromServer(id)
+                    getMovieByIdFromServer(id, isCached)
             }
     }
 
@@ -53,11 +51,13 @@ class MovieRepositoryImpl @Inject constructor(
         return moviesDao.clearMovieCache(movie.toDB())
     }
 
-    private fun getMovieByIdFromServer(id: Int): Single<Movie> {
-        return retrofitServiceMovies.getMovieById(id).map { movie -> movie.toDomain() }
+    private fun getMovieByIdFromServer(id: Int, isCached: Boolean): Single<Pair<Movie, Boolean>> {
+        return retrofitServiceMovies.getMovieById(id)
+            .flatMap { movie -> Single.just(movie.toDomain() to isCached) }
     }
 
-    private fun getMovieByIdFromCache(id: Int): Single<Movie> {
-        return moviesDao.getCachedMovieById(id).toSingle().map { it.toDomain() }
+    private fun getMovieByIdFromCache(id: Int, isCached: Boolean): Single<Pair<Movie, Boolean>> {
+        return moviesDao.getCachedMovieById(id).toSingle()
+            .flatMap { movie -> Single.just(movie.toDomain() to isCached) }
     }
 }

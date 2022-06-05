@@ -7,7 +7,7 @@ import io.reactivex.Single
 interface MovieRepository {
     fun getMoviesInfo(): Single<List<Movie>>
 
-    fun getMovieInfoById(id: Int): Single<Movie>
+    fun getMovieInfoById(id: Int): Single<Pair<Movie, Boolean>>
 
     fun getMoviesInfoByName(name: String): Single<List<Movie>>
 

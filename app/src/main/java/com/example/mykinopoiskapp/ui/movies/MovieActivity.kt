@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -35,11 +38,16 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
     private var isDescriptionOpen = false
     private lateinit var movie: Movie
     private val movieId: Int by lazy { intent.getIntExtra(EXTRA_MOVIE_ID, 0) }
+    private lateinit var buttonAddToFavorites: ImageButton
+    private lateinit var addToFavoritesTittle: TextView
+    private lateinit var buttonRemoveFromFavorites: ImageButton
+    private lateinit var removeFromFavoritesTittle: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         actorAdapter = ActorAdapter()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -53,8 +61,16 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
             adapter = actorAdapter
         }
 
-        binding.buttonAddToFavorites.setOnClickListener {
+        buttonAddToFavorites = binding.buttonAddToFavorites
+        addToFavoritesTittle = binding.addToFavoritesTittle
+        buttonAddToFavorites.setOnClickListener {
             moviePresenter.addToFavorites(movie)
+        }
+
+        buttonRemoveFromFavorites = binding.buttonRemoveFromFavorites
+        removeFromFavoritesTittle = binding.removeFromFavoritesTittle
+        buttonRemoveFromFavorites.setOnClickListener {
+            moviePresenter.removeFromFavorites(movie)
         }
 
         moviePresenter.onAppearing(movieId)
@@ -113,6 +129,16 @@ class MovieActivity : MvpAppCompatActivity(), MovieView {
 
     override fun showActorsInfo(actors: List<Actor>) {
         actorAdapter.setActors(actors)
+    }
+
+    override fun showButtonRemoveFromCache() {
+        buttonRemoveFromFavorites.visibility = View.VISIBLE
+        removeFromFavoritesTittle.visibility = View.VISIBLE
+    }
+
+    override fun showButtonAddToCache() {
+        buttonRemoveFromFavorites.visibility = View.INVISIBLE
+        removeFromFavoritesTittle.visibility = View.INVISIBLE
     }
 
     override fun showSuccess(message: String) {
